@@ -1,0 +1,890 @@
+Hello Team!
+
+We are building an app called Cartographer that shows tweets stored in redis on a map of the earth, using the Google Earth API.
+
+As a user
+When a new tweet is saved in redis under the cartographer namespace
+And that tweet has a geo attribute
+Then I see a placemark indicating that location on Google Earth
+And when I click on that placemark I see a popup with the message
+And I see a reply button
+And when I click on the reply button
+I am able to type into a form that validates length to 140 characters
+And when I hit send
+Then there is a post to a controller action to create the tweet (I'll take if from here)
+
+Feature priority:
+1. Tweets show up on the map as Placemarks
+2. Placemarks have a twitter icon
+3. Placemarks have an on-click popup to show the message
+4. There is a reply button and a fake form
+5. The fake form actually posts to a controller
+
+Team Order:
+1. Andy && Austen - Andy only has 1hr but he is experienced with pins and javascript so pair with him to jumpstart your 3 hours Austen
+2. Mark - You're on for two hours, make sure you leave time to give Chipala a good idea of where to go next.
+3. Mike - You have 3 hours to finish as much as you can before we go to front-end.
+4. Chris - Code up to 2 hours trying to get feature complete if necessary, then move to 2 hours of design. 
+
+Leave at least 15 minutes at the end of your time on the project to brief the next programmer on your progress.
+
+Example Data (note that asterisks are only delimiters):
+The Polygon place data can be interpreted as a point if that helps; if the tweet came from Chile put the pin anywhere in Chile.
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+      {
+        "indices": [
+          100,
+          120
+        ],
+        "display_url": "4sq.com/MqUEqr",
+        "expanded_url": "http://4sq.com/MqUEqr",
+        "url": "http://t.co/GkiWhi6e"
+      }
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "weni, entregando monos c: (@ Pontificia Universidad Católica de Chile - Campus Oriente w/ 2 others) http://t.co/GkiWhi6e",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "country": "Chile",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -75.6877144,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -17.497384
+          ],
+          [
+            -75.6877144,
+            -17.497384
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Chile",
+    "name": "Chile",
+    "place_type": "country",
+    "id": "47a3cf27863714de",
+    "country_code": "CL",
+    "url": "http://api.twitter.com/1/geo/id/47a3cf27863714de.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://foursquare.com\" rel=\"nofollow\">foursquare</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "possibly_sensitive_editable": true,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -70.5937221,
+      -33.44633462
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      -33.44633462,
+      -70.5937221
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 2,
+    "lang": "en",
+    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/462882783/1024x768.jpg",
+    "followers_count": 149,
+    "profile_image_url": "http://a0.twimg.com/profile_images/2282150409/4xgfpsiy8c4m3porwsdh_normal.jpeg",
+    "show_all_inline_media": false,
+    "statuses_count": 13714,
+    "profile_link_color": "000000",
+    "screen_name": "coniconon",
+    "default_profile": false,
+    "notifications": null,
+    "location": "Bikini Bottom",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "ffffff",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/2282150409/4xgfpsiy8c4m3porwsdh_normal.jpeg",
+    "description": "Estudiante de Diseño UC. Eh asdf. Hola.",
+    "profile_background_tile": false,
+    "time_zone": "Quito",
+    "profile_sidebar_fill_color": "ffffff",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 239,
+    "friends_count": 188,
+    "profile_sidebar_border_color": "ffffff",
+    "protected": false,
+    "name": "Constanza Morales A.",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/462882783/1024x768.jpg",
+    "created_at": "Tue May 31 20:10:51 +0000 2011",
+    "id": 308671453,
+    "id_str": "308671453",
+    "follow_request_sent": null,
+    "utc_offset": -18000,
+    "profile_text_color": "000000",
+    "url": "http://about.me/constanzamorales"
+  },
+  "retweeted": false,
+  "id": 217625002504232961,
+  "created_at": "Tue Jun 26 14:26:58 +0000 2012",
+  "possibly_sensitive": false,
+  "id_str": "217625002504232961"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+      {
+        "indices": [
+          102,
+          122
+        ],
+        "display_url": "4sq.com/KB5as7",
+        "expanded_url": "http://4sq.com/KB5as7",
+        "url": "http://t.co/ihw1ow97"
+      }
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "Un buen desayuno de pan con palta! Para partir la mañana (@ Clínica Universidad Católica w/ 4 others) http://t.co/ihw1ow97",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "place_type": "country",
+    "country": "Chile",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -75.6877144,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -17.497384
+          ],
+          [
+            -75.6877144,
+            -17.497384
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Chile",
+    "name": "Chile",
+    "id": "47a3cf27863714de",
+    "country_code": "CL",
+    "url": "http://api.twitter.com/1/geo/id/47a3cf27863714de.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://foursquare.com\" rel=\"nofollow\">foursquare</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "possibly_sensitive_editable": true,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -70.50962887,
+      -33.40020012
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      -33.40020012,
+      -70.50962887
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 0,
+    "lang": "es",
+    "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif",
+    "followers_count": 27,
+    "profile_image_url": "http://a0.twimg.com/profile_images/1553788794/189755_10150127849153276_772843275_6453274_5174819_n_normal.jpg",
+    "show_all_inline_media": false,
+    "statuses_count": 231,
+    "profile_link_color": "009999",
+    "screen_name": "naxobarra",
+    "default_profile": false,
+    "notifications": null,
+    "location": "Santiago",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "131516",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/1553788794/189755_10150127849153276_772843275_6453274_5174819_n_normal.jpg",
+    "description": "Estudiante, 5 año en Kinesiologia U. Mayor. Deportista runner",
+    "profile_background_tile": true,
+    "time_zone": "Santiago",
+    "profile_sidebar_fill_color": "efefef",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 0,
+    "friends_count": 97,
+    "profile_sidebar_border_color": "eeeeee",
+    "protected": false,
+    "name": "Ignacio Barra M.",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif",
+    "created_at": "Wed Sep 21 23:04:03 +0000 2011",
+    "id": 377671588,
+    "id_str": "377671588",
+    "follow_request_sent": null,
+    "utc_offset": -14400,
+    "profile_text_color": "333333",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217625342708428802,
+  "created_at": "Tue Jun 26 14:28:19 +0000 2012",
+  "possibly_sensitive": false,
+  "id_str": "217625342708428802"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "Cat is a very good jumper, really",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "place_type": "city",
+    "country": "Indonesia",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            106.817351,
+            -6.24152
+          ],
+          [
+            106.8522781,
+            -6.24152
+          ],
+          [
+            106.8522781,
+            -6.201177
+          ],
+          [
+            106.817351,
+            -6.201177
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Setia Budi, Jakarta Selatan",
+    "name": "Setia Budi",
+    "id": "66555622726ab358",
+    "country_code": "ID",
+    "url": "http://api.twitter.com/1/geo/id/66555622726ab358.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      106.83329021,
+      -6.20915865
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      -6.20915865,
+      106.83329021
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 1,
+    "lang": "en",
+    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/564782983/Soccer_Aid_hnVTIeMR70Rl.jpg",
+    "followers_count": 288,
+    "profile_image_url": "http://a0.twimg.com/profile_images/2334448231/hnk5mdyxp5f0z03yulte_normal.jpeg",
+    "show_all_inline_media": false,
+    "statuses_count": 13597,
+    "profile_link_color": "48c9f0",
+    "screen_name": "schazya",
+    "default_profile": false,
+    "notifications": null,
+    "location": "beneath the skies",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "ebae15",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/2334448231/hnk5mdyxp5f0z03yulte_normal.jpeg",
+    "description": "NORMAL IS OVERRATED - I took the risk, I'll take the gift.\r\nNumbers never wrong.\r\n11 years as a co-captain in class and 9 years as a basketball captain",
+    "profile_background_tile": false,
+    "time_zone": "Jakarta",
+    "profile_sidebar_fill_color": "241d24",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 632,
+    "friends_count": 256,
+    "profile_sidebar_border_color": "181A1E",
+    "protected": false,
+    "name": "Prasasya Dira",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/564782983/Soccer_Aid_hnVTIeMR70Rl.jpg",
+    "created_at": "Sat Apr 25 08:10:57 +0000 2009",
+    "id": 35175561,
+    "id_str": "35175561",
+    "follow_request_sent": null,
+    "utc_offset": 25200,
+    "profile_text_color": "ccc6cc",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217625545691770883,
+  "created_at": "Tue Jun 26 14:29:08 +0000 2012",
+  "id_str": "217625545691770883"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "Got a dilly of a pickle over here. Does anyone know how 2 get a cat to stop doing something? Is it still with a pillowcase and a rock?",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "country": "United States",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -74.047249,
+            40.679548
+          ],
+          [
+            -73.907104,
+            40.679548
+          ],
+          [
+            -73.907104,
+            40.882214
+          ],
+          [
+            -74.047249,
+            40.882214
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Manhattan, NY",
+    "name": "Manhattan",
+    "place_type": "city",
+    "id": "086752cb03de1d5d",
+    "country_code": "US",
+    "url": "http://api.twitter.com/1/geo/id/086752cb03de1d5d.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -73.9793453,
+      40.76376854
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      40.76376854,
+      -73.9793453
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 7,
+    "lang": "en",
+    "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif",
+    "followers_count": 370,
+    "profile_image_url": "http://a0.twimg.com/profile_images/1368925641/winepitcher_normal.jpg",
+    "show_all_inline_media": false,
+    "statuses_count": 1149,
+    "profile_link_color": "009999",
+    "screen_name": "scottquimby",
+    "default_profile": false,
+    "notifications": null,
+    "location": "New York City",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "131516",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/1368925641/winepitcher_normal.jpg",
+    "description": "I live my life by following 3 simple rules. 1- Never keep a list.",
+    "profile_background_tile": true,
+    "time_zone": "Eastern Time (US & Canada)",
+    "profile_sidebar_fill_color": "efefef",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 414,
+    "friends_count": 331,
+    "profile_sidebar_border_color": "eeeeee",
+    "protected": false,
+    "name": "scott quimby",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif",
+    "created_at": "Thu Feb 19 01:49:46 +0000 2009",
+    "id": 21265461,
+    "id_str": "21265461",
+    "follow_request_sent": null,
+    "utc_offset": -18000,
+    "profile_text_color": "333333",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217625895404445696,
+  "created_at": "Tue Jun 26 14:30:31 +0000 2012",
+  "id_str": "217625895404445696"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+
+    ],
+    "user_mentions": [
+      {
+        "indices": [
+          0,
+          12
+        ],
+        "screen_name": "LuizaB_Lima",
+        "name": "Luiza B . Liima ",
+        "id": 330028442,
+        "id_str": "330028442"
+      }
+    ]
+  },
+  "text": "@LuizaB_Lima te doru tbm my cat (;",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "country": "Brasil",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -51.4016033,
+            -6.2177888
+          ],
+          [
+            -48.7285017,
+            -6.2177888
+          ],
+          [
+            -48.7285017,
+            -4.920203
+          ],
+          [
+            -51.4016033,
+            -4.920203
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Marabá, Pará",
+    "name": "Marabá",
+    "id": "ef3ea8f0327fd3ec",
+    "place_type": "city",
+    "country_code": "BR",
+    "url": "http://api.twitter.com/1/geo/id/ef3ea8f0327fd3ec.json"
+  },
+  "in_reply_to_user_id_str": "330028442",
+  "in_reply_to_screen_name": "LuizaB_Lima",
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -49.0798627,
+      -5.3559481
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      -5.3559481,
+      -49.0798627
+    ]
+  },
+  "in_reply_to_user_id": 330028442,
+  "user": {
+    "listed_count": 0,
+    "lang": "pt",
+    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/563681181/page.jpg",
+    "followers_count": 115,
+    "profile_image_url": "http://a0.twimg.com/profile_images/2275857434/3nxoqjsjqmcyp1472y3t_normal.jpeg",
+    "show_all_inline_media": false,
+    "statuses_count": 764,
+    "profile_link_color": "038543",
+    "screen_name": "Mayara_csantos",
+    "default_profile": false,
+    "notifications": null,
+    "location": "pará-marabá",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "ACDED6",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/2275857434/3nxoqjsjqmcyp1472y3t_normal.jpeg",
+    "description": "Nada em mente no momento, :///",
+    "profile_background_tile": true,
+    "time_zone": "Greenland",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 24,
+    "friends_count": 84,
+    "profile_sidebar_border_color": "C0DEED",
+    "protected": false,
+    "name": "Mayaara Santoos",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/563681181/page.jpg",
+    "created_at": "Fri Jun 24 00:29:09 +0000 2011",
+    "id": 322941124,
+    "id_str": "322941124",
+    "follow_request_sent": null,
+    "utc_offset": -10800,
+    "profile_text_color": "333333",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217626369675370500,
+  "created_at": "Tue Jun 26 14:32:24 +0000 2012",
+  "id_str": "217626369675370500"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "Guy 1 : \"Fuck YOLO, Ima Cat, I Got 9 Lives, Top That!\" Guy 2 : \"That Makes Sense, Since Your a Pussy...\"",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "place_type": "city",
+    "country": "United States",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -85.567297,
+            32.529719
+          ],
+          [
+            -85.405075,
+            32.529719
+          ],
+          [
+            -85.405075,
+            32.67152
+          ],
+          [
+            -85.567297,
+            32.67152
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Auburn, AL",
+    "name": "Auburn",
+    "id": "deb349182b3f42bb",
+    "country_code": "US",
+    "url": "http://api.twitter.com/1/geo/id/deb349182b3f42bb.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -85.4886082,
+      32.6202296
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      32.6202296,
+      -85.4886082
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 0,
+    "lang": "en",
+    "profile_background_image_url": "http://a0.twimg.com/images/themes/theme4/bg.gif",
+    "followers_count": 349,
+    "profile_image_url": "http://a0.twimg.com/profile_images/2329288817/gC6hKtX9_normal",
+    "show_all_inline_media": true,
+    "statuses_count": 6881,
+    "profile_link_color": "0099B9",
+    "screen_name": "ExcuseYuHOE",
+    "default_profile": false,
+    "notifications": null,
+    "location": "Teara's World",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "0099B9",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/2329288817/gC6hKtX9_normal",
+    "description": "Been Boss Bitchin' Since 94 & Aint Nan Bitch Stoppin My Hustle, Im Goin Str8 2 The $$$ :) Its Simple, Act Like A Lady, Think Like A BOSS! #TeamFollowBack",
+    "profile_background_tile": false,
+    "time_zone": "Fiji",
+    "profile_sidebar_fill_color": "95E8EC",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 640,
+    "friends_count": 349,
+    "profile_sidebar_border_color": "5ED4DC",
+    "protected": false,
+    "name": "☆Boss Bitch Indeed!☆",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme4/bg.gif",
+    "created_at": "Wed May 04 02:14:04 +0000 2011",
+    "id": 292691938,
+    "id_str": "292691938",
+    "follow_request_sent": null,
+    "utc_offset": 43200,
+    "profile_text_color": "3C3940",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217626372611387392,
+  "created_at": "Tue Jun 26 14:32:25 +0000 2012",
+  "id_str": "217626372611387392"
+}
+********************************************************
+{
+  "entities": {
+    "hashtags": [
+
+    ],
+    "urls": [
+      {
+        "indices": [
+          111,
+          131
+        ],
+        "display_url": "4sq.com/MS7m25",
+        "expanded_url": "http://4sq.com/MS7m25",
+        "url": "http://t.co/1ZnK2RPc"
+      }
+    ],
+    "user_mentions": [
+
+    ]
+  },
+  "text": "I'm at Pontificia Universidad Católica de Chile - Campus San Joaquín (Macul, Región Metropolitana) w/ 4 others http://t.co/1ZnK2RPc",
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "country": "Chile",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -75.6877144,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -55.9775213
+          ],
+          [
+            -66.3828747,
+            -17.497384
+          ],
+          [
+            -75.6877144,
+            -17.497384
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    },
+    "full_name": "Chile",
+    "name": "Chile",
+    "place_type": "country",
+    "id": "47a3cf27863714de",
+    "country_code": "CL",
+    "url": "http://api.twitter.com/1/geo/id/47a3cf27863714de.json"
+  },
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "favorited": false,
+  "in_reply_to_status_id": null,
+  "source": "<a href=\"http://foursquare.com\" rel=\"nofollow\">foursquare</a>",
+  "contributors": null,
+  "retweet_count": 0,
+  "truncated": false,
+  "possibly_sensitive_editable": true,
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      -70.61455965,
+      -33.49874706
+    ]
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      -33.49874706,
+      -70.61455965
+    ]
+  },
+  "in_reply_to_user_id": null,
+  "user": {
+    "listed_count": 2,
+    "lang": "es",
+    "profile_background_image_url": "http://a0.twimg.com/images/themes/theme10/bg.gif",
+    "followers_count": 225,
+    "profile_image_url": "http://a0.twimg.com/profile_images/2062457037/IMG_2500_1__normal.PNG",
+    "show_all_inline_media": false,
+    "statuses_count": 7746,
+    "profile_link_color": "FF0000",
+    "screen_name": "Lore_Aqueveque",
+    "default_profile": false,
+    "notifications": null,
+    "location": "Santiago, Chile",
+    "is_translator": false,
+    "following": null,
+    "profile_background_color": "642D8B",
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/2062457037/IMG_2500_1__normal.PNG",
+    "description": "Estudio Lic. en Matematica en la PUC. Comienzo a vivir mi vida, por fin! Soy una enamorada de mis amigas! :) ",
+    "profile_background_tile": true,
+    "time_zone": "Quito",
+    "profile_sidebar_fill_color": "7AC3EE",
+    "default_profile_image": false,
+    "verified": false,
+    "favourites_count": 271,
+    "friends_count": 556,
+    "profile_sidebar_border_color": "65B0DA",
+    "protected": false,
+    "name": "Loreto Aqueveque",
+    "contributors_enabled": false,
+    "geo_enabled": true,
+    "profile_use_background_image": true,
+    "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme10/bg.gif",
+    "created_at": "Fri May 28 15:09:59 +0000 2010",
+    "id": 149153731,
+    "id_str": "149153731",
+    "follow_request_sent": null,
+    "utc_offset": -18000,
+    "profile_text_color": "3D1957",
+    "url": null
+  },
+  "retweeted": false,
+  "id": 217626730263871490,
+  "created_at": "Tue Jun 26 14:33:50 +0000 2012",
+  "possibly_sensitive": false,
+  "id_str": "217626730263871490"
+}
