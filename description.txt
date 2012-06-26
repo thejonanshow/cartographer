@@ -26,6 +26,12 @@ Team Order:
 3. Mike - You have 3 hours to finish as much as you can before we go to front-end.
 4. Chris - Code up to 2 hours trying to get feature complete if necessary, then move to 2 hours of design. 
 
+Google Earth JS Playground (awesome):
+http://code.google.com/apis/ajax/playground/?exp=earth#creating_placemarks
+
+Google Earth API Docs (less awesome):
+https://developers.google.com/earth/documentation/index#using_the_google_earth_api
+
 Leave at least 15 minutes at the end of your time on the project to brief the next programmer on your progress.
 
 Example Data (note that asterisks are only delimiters):
