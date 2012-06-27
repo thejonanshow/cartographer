@@ -1,7 +1,8 @@
 class Placemark
-  attr_accessor :latitude, :longitude
+  attr_accessor :text, :latitude, :longitude
 
-  def initialize(latitude, longitude)
+  def initialize(text, latitude, longitude)
+    @text = text
     @latitude = latitude
     @longitude = longitude
   end

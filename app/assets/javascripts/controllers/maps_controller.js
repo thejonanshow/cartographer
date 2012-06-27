@@ -48,12 +48,12 @@ function createPlacemark(attributes) {
   if (port != undefined) {
     hostname += ":" + port
   }
-  console.log(hostname);
   icon.setHref("http://" + hostname + '/assets/twitter.png');
 
   var style = ge.createStyle('');
   style.getIconStyle().setIcon(icon);
   placemark.setStyleSelector(style);
+  placemark.setDescription(attributes.text);
 
   // Create point
   var la = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);

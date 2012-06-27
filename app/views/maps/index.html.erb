@@ -5,7 +5,7 @@
     <div>Installed Plugin Version: <span id="installed-plugin-version" style="font-weight: bold;">Loading...</span></div>
     
     <% @placemarks.each do |placemark| %>
-      <a href="#" class="placemark" data-lat="<%= placemark.latitude %>" data-lon="<%= placemark.longitude %>"><%= placemark.latitude %>, <%= placemark.longitude %></a>
+      <a href="#" class="placemark" data-text="<%= placemark.text %>" data-lat="<%= placemark.latitude %>" data-lon="<%= placemark.longitude %>"><%= placemark.latitude %>, <%= placemark.longitude %></a>
       <br/>
     <% end %>
 </body>
