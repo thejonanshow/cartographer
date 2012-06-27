@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'ember-rails'
 gem 'sqlite3'
 gem 'jquery-rails'
+gem 'redis-store'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
