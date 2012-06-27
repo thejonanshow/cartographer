@@ -1,12 +1,14 @@
-require 'faye'
-require 'eventmachine'
+require 'net/http'
+require 'uri'
+require 'json'
 
-  EM.run {
-    client = Faye::Client.new('http://localhost:9000/faye')
+  while true
     foo = gets.chomp
-    client.publish('/placemarkers', 
-              { 'latitude' => rand * 179,
+    Net::HTTP.post_form(URI.parse('http://localhost:9000/faye'), :message => { 
+              'channel' => "/placemarkers",
+              data: {
+              'latitude' => rand * 179,
               'longitude' => rand * 179,
-              'text' => foo
-              })
-  }
+              'text' => foo }
+              }.to_json ) 
+  end
