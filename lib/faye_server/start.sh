@@ -1,0 +1,1 @@
+thin start -e production -p 9000

@@ -37,7 +37,7 @@ function failureCallback(errorCode) {
 
 function createPlacemark(attributes) {
   var placemark = ge.createPlacemark('');
-  placemark.setName("placemark" + counter);
+  placemark.setName(attributes.text);
   ge.getFeatures().appendChild(placemark);
 
   // Create style map for placemark
